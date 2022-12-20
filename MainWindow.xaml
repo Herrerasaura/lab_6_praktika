@@ -1,0 +1,82 @@
+﻿<Window x:Class="lab_6_Sav.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:lab_6_Sav"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+
+        <Style TargetType="Button">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.Setters>
+                        <Setter Property="FontStyle" Value="Italic" />
+                    </Trigger.Setters>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="Green"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="BlueText">
+            <Style.Setters>
+                <Setter Property="Background" Value="DarkBlue" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="FontFamily" Value="Verdana" />
+                <Setter Property="FontSize" Value="18"/>
+            </Style.Setters>
+        </Style>
+        <Style TargetType="TextBox" x:Key="RedText">
+            <Style.Setters>
+                <Setter Property="Background" Value="LightGoldenrodYellow" />
+                <Setter Property="Foreground" Value="DarkRed" />
+                <Setter Property="FontFamily" Value="Verdana" />
+                <Setter Property="FontSize" Value="10"/>
+            </Style.Setters>
+        </Style>
+        <Style TargetType="TextBox" x:Key="NormalText">
+            <Style.Setters>
+                <Setter Property="Background" Value="White" />
+                <Setter Property="Foreground" Value="Black"/>
+            </Style.Setters>
+        </Style>
+
+    </Window.Resources>    <DockPanel>
+
+        <StackPanel DockPanel.Dock="Top">
+
+            <StackPanel Orientation="Horizontal">
+
+                <Button Content="Открыть" Click="Open" />
+                <Separator/>
+                <Button Content="Очистить" Click="Clean" />
+                <Separator/>
+                <Button Content="Закрыть" Click="Close" />
+
+            </StackPanel>
+
+            <Menu Background="White" BorderBrush="Navy" BorderThickness="1">
+                <MenuItem Header="_Изменить стиль">
+                    <MenuItem Header="_Синий" Click="BlueFont" />
+                    <MenuItem Header="_Красный" Click="RedFont" />
+                    <MenuItem Header="_Нормальный" Click="NormalFont" />
+                </MenuItem>
+            </Menu>
+
+            <Label x:Name="info" Content=""/>
+
+        </StackPanel>
+
+        <StackPanel>
+
+            <TextBox x:Name="text1" Text="" Height="100" Style="{StaticResource BlueText}" Visibility="Hidden"/>
+            <TextBox x:Name="text2" Text="" Height="100" Style="{StaticResource BlueText}" Visibility="Hidden"/>
+
+        </StackPanel>
+
+    </DockPanel>
+
+</Window>
